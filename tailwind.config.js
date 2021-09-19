@@ -15,10 +15,13 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
+      gray: {
+        DEFAULT: '#969696',
+        light: '#2B2B2B'
+      },
 
       black: colors.black,
       white: colors.white,
-      gray: colors.coolGray,
       red: colors.red,
       yellow: colors.amber,
       green: colors.emerald,
