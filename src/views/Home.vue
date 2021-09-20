@@ -6,19 +6,20 @@
           IP Address Tracker
         </div>
         <Searchbar />
+        <Result />
       </div>
     </header>
-
-    IP Address Location Timezone ISP
   </div>
 </template>
 
 <script>
 import Searchbar from "../components/Searchbar.vue";
+import Result from "../components/Result.vue";
 export default {
   name: "Home",
   components: {
     Searchbar,
+    Result,
   },
 };
 </script>
