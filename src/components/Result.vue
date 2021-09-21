@@ -1,8 +1,7 @@
 <template>
   <div
     class="
-      w-full
-      border-2
+      w-11/12
       sm:mx-auto
       rounded-xl
       bg-white
@@ -18,6 +17,7 @@
       xl:w-4/6
       sm:justify-around
       sm:divide-x-2 sm:divide-opacity-10 sm:divide-gray-light
+      z-20
     "
   >
     <div class="mt-3 sm:mt-0 sm:px-4" v-for="item in items" :key="item.id">
