@@ -17,7 +17,14 @@
       xl:w-4/6
       sm:justify-around
       sm:divide-x-2 sm:divide-opacity-10 sm:divide-gray-light
-      z-20
+      absolute
+      top-40
+      left-1/2
+      transform
+      -translate-x-2/4
+      sm:top-1/4
+      sm:left-1/2
+      sm:-translate-y-1/4 sm:-translate-x-2/4
     "
   >
     <div class="mt-3 sm:mt-0 sm:px-4" v-for="item in items" :key="item.id">

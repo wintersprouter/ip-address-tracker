@@ -22,7 +22,8 @@ const routes = [
     },
     {
       name: 'result',
-      path: 'result'
+      path: 'result',
+      component: () => import('../components/Result.vue')
     }]
   }
 ]

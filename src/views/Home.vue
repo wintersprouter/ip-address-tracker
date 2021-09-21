@@ -9,30 +9,16 @@
       </div>
     </header>
     <router-view />
-    <Result
-      class="
-        absolute
-        top-40
-        left-1/2
-        transform
-        -translate-x-2/4
-        sm:top-1/4
-        sm:left-1/2
-        sm:-translate-y-1/4 sm:-translate-x-2/4
-      "
-    />
   </div>
 </template>
 
 <script>
 import Searchbar from "../components/Searchbar.vue";
-import Result from "../components/Result.vue";
 
 export default {
   name: "Home",
   components: {
     Searchbar,
-    Result,
   },
 };
 </script>
