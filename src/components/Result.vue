@@ -37,8 +37,15 @@
 </template>
 <script>
 export default {
+  props: {
+    data: {
+      type: Object,
+      required: true,
+    },
+  },
   data() {
     return {
+      ipAddressData: this.data,
       items: [
         {
           id: -1,
@@ -48,31 +55,33 @@ export default {
       ],
     };
   },
-  async created() {
+  async mounted() {
     await this.getResult();
   },
   methods: {
     getResult() {
+      console.log("getResult", this.ipData);
+      const { ip, isp, location } = this.ipAddressData;
       this.items = [
         {
           id: 1,
           title: "IP Address",
-          content: "192.121.174.153",
+          content: `${ip}`,
         },
         {
           id: 2,
           title: "Location",
-          content: "brooklym,newyork 1001",
+          content: `${location.city} ${location.country} ${location.region}`,
         },
         {
           id: 3,
           title: "Timezone",
-          content: "UTC-5:00",
+          content: `${location.timezone}`,
         },
         {
           id: 4,
           title: "ISP",
-          content: "Space X Starlink",
+          content: `${isp}`,
         },
       ];
     },

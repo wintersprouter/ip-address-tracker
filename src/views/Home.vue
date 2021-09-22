@@ -76,16 +76,22 @@
         </div>
       </div>
     </header>
-    <router-view />
+    <template v-if="isDefault"><DefaultMap /></template>
+    <template v-if="!isDefault"><Result :data="ipAddressData" /></template>
   </div>
 </template>
 
 <script>
 import { Toast } from "./../utils/helpers";
-
+import DefaultMap from "./../components/DefaultMap.vue";
+import Result from "./../components/Result.vue";
 import axios from "axios";
 export default {
   name: "Home",
+  components: {
+    DefaultMap,
+    Result,
+  },
 
   data() {
     return {
@@ -104,11 +110,12 @@ export default {
           timezone: "00:00",
         },
       },
+      isDefault: true,
       isProcessing: false,
     };
   },
-  created() {
-    this.fetchIpApi();
+  async created() {
+    await this.fetchIpApi();
   },
   methods: {
     async fetchIpApi() {
@@ -119,6 +126,7 @@ export default {
           throw new Error(response.message);
         }
         this.ip = response.data.ip;
+        console.log("fetchIpApi", this.ipAddressData);
       } catch (error) {
         console.log(error);
         Toast.fire({
@@ -165,7 +173,6 @@ export default {
           throw new Error(response.message);
         }
         const { data } = response;
-        console.log(data);
         const { ip, isp, location } = data;
         const { city, country, lat, lng, postalCode, region, timezone } =
           location;
@@ -183,7 +190,8 @@ export default {
             timezone: timezone,
           },
         };
-        this.$router.push({ name: "result" });
+
+        this.isDefault = false;
         this.isProcessing = false;
       } catch (error) {
         this.isProcessing = false;
