@@ -36,14 +36,7 @@
     </div>
     <div class="mt-3 sm:mt-0 sm:px-4 sm:pt-3">
       <button
-        class="
-          text-white
-          ring-4 ring-indigo-100
-          bg-indigo-400
-          rounded-md
-          p-2
-          sm:mb-0
-        "
+        class="text-white ring-4 ring-red-300 bg-red-500 rounded-md p-2 sm:mb-0"
         :disabled="isProcessing"
         type="button"
         @click="handleReset"
@@ -80,7 +73,6 @@ export default {
   },
   methods: {
     getResult() {
-      console.log("getResult", this.ipData);
       const { ip, isp, location } = this.ipAddressData;
       this.items = [
         {

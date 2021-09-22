@@ -82,7 +82,8 @@
         </div>
       </div>
     </header>
-    <template v-if="isDefault"><DefaultMap /></template>
+    <template v-if="isDefault"><DefaultMap :data="ipAddressData" /></template>
+    <template v-if="!isDefault"><ResultMap :center="center" /></template>
     <template v-if="!isDefault"
       ><Result :data="ipAddressData" @back-to-default="alterIsDefault"
     /></template>
@@ -92,6 +93,7 @@
 <script>
 import { Toast } from "./../utils/helpers";
 import DefaultMap from "./../components/DefaultMap.vue";
+import ResultMap from "./../components/ResultMap.vue";
 import Result from "./../components/Result.vue";
 import axios from "axios";
 export default {
@@ -99,6 +101,7 @@ export default {
   components: {
     DefaultMap,
     Result,
+    ResultMap,
   },
 
   data() {
@@ -118,6 +121,7 @@ export default {
           timezone: "00:00",
         },
       },
+      center: [0, 0],
       isDefault: true,
       isProcessing: false,
     };
@@ -134,7 +138,6 @@ export default {
           throw new Error(response.message);
         }
         this.ip = response.data.ip;
-        console.log("fetchIpApi", this.ipAddressData);
       } catch (error) {
         console.log(error);
         Toast.fire({
@@ -198,6 +201,7 @@ export default {
             timezone: timezone,
           },
         };
+        this.center = [lat, lng];
 
         this.isDefault = false;
         this.isProcessing = false;
