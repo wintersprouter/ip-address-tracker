@@ -22,9 +22,9 @@
       left-1/2
       transform
       -translate-x-2/4
-      sm:top-1/4
+      sm:top-1/5
       sm:left-1/2
-      sm:-translate-y-1/4 sm:-translate-x-2/4
+      sm:-translate-y-1/5 sm:-translate-x-2/4
     "
   >
     <div class="mt-3 sm:mt-0 sm:px-4" v-for="item in items" :key="item.id">
