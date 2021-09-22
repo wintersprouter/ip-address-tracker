@@ -6,7 +6,10 @@
           IP Address Tracker
         </div>
         <div>
-          <div class="search-bar w-full sm:w-2/5 flex sm:mx-auto">
+          <div
+            class="search-bar w-full sm:w-2/5 flex sm:mx-auto"
+            v-if="isDefault"
+          >
             <form class="w-full" @submit.stop.prevent="handleSubmit">
               <input
                 type="text"
@@ -35,7 +38,10 @@
             </form>
           </div>
 
-          <h1 class="text-white text-2xl font-medium text-center my-8">
+          <h1
+            class="text-white text-2xl font-medium text-center my-8"
+            v-if="isDefault"
+          >
             Your IP address is <span>{{ this.ip }}</span
             ><button
               type="button"
@@ -56,7 +62,7 @@
               Copy!
             </button>
           </h1>
-          <div class="flex justify-center sm:hidden">
+          <div class="flex justify-center sm:hidden" v-if="isDefault">
             <button
               type="button"
               class="
@@ -77,7 +83,9 @@
       </div>
     </header>
     <template v-if="isDefault"><DefaultMap /></template>
-    <template v-if="!isDefault"><Result :data="ipAddressData" /></template>
+    <template v-if="!isDefault"
+      ><Result :data="ipAddressData" @back-to-default="alterIsDefault"
+    /></template>
   </div>
 </template>
 
@@ -200,6 +208,14 @@ export default {
           icon: "warning",
           title: "An error occurred,please try again later",
         });
+      }
+    },
+    async alterIsDefault() {
+      try {
+        this.isDefault = true;
+      } catch (error) {
+        this.isDefault = false;
+        console.log(error);
       }
     },
   },
