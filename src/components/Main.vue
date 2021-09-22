@@ -30,6 +30,7 @@ export default {
   },
   data() {
     return {
+      ishomePage: true,
       zoom: 16,
       center: [25.033493, 121.564101],
       url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",

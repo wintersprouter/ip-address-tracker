@@ -1,10 +1,13 @@
 import { Icon } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import Vue from 'vue'
+import VueClipboard from 'vue-clipboard2'
 import { LIcon, LMap, LMarker, LPopup, LTileLayer } from 'vue2-leaflet'
 import App from './App.vue'
 import './assets/tailwind.css'
 import router from './router'
+
+Vue.use(VueClipboard)
 Vue.component('l-map', LMap)
 Vue.component('l-tile-layer', LTileLayer)
 Vue.component('l-marker', LMarker)
