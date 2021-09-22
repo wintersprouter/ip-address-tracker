@@ -14,7 +14,7 @@
           px-2
           lg:px-5
         "
-        placeholder="Search for any IP address or domain"
+        placeholder="Search for any IP address."
       />
       <button
         class="h-16 bg-black rounded-r-xl w-2/12 xl:w-1/10 py-1"
