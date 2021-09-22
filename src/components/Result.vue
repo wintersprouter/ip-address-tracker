@@ -18,13 +18,14 @@
       sm:justify-around
       sm:divide-x-2 sm:divide-opacity-10 sm:divide-gray-light
       absolute
-      top-40
+      top-0
       left-1/2
       transform
-      -translate-x-2/4
-      sm:top-1/5
+      translate-y-1/4
+      -translate-x-1/2
+      sm:top-0
       sm:left-1/2
-      sm:-translate-y-1/5 sm:-translate-x-2/4
+      sm:-translate-y-0 sm:-translate-x-2/4
     "
   >
     <div class="mt-3 sm:mt-0 sm:px-4" v-for="item in items" :key="item.id">
@@ -33,8 +34,19 @@
       </div>
       <div class="font-bold text-2xl">{{ item.content }}</div>
     </div>
+    <div class="mt-3 sm:mt-0 sm:px-4 sm:pt-3">
+      <button
+        class="text-white ring-4 ring-red-300 bg-red-500 rounded-md p-2 sm:mb-0"
+        :disabled="isProcessing"
+        type="button"
+        @click="handleReset"
+      >
+        <span class="text-white font-bold btn-icon">reset</span>
+      </button>
+    </div>
   </div>
 </template>
+
 <script>
 export default {
   props: {
@@ -53,6 +65,7 @@ export default {
           content: "",
         },
       ],
+      isProcessing: false,
     };
   },
   async mounted() {
@@ -60,7 +73,6 @@ export default {
   },
   methods: {
     getResult() {
-      console.log("getResult", this.ipData);
       const { ip, isp, location } = this.ipAddressData;
       this.items = [
         {
@@ -84,6 +96,11 @@ export default {
           content: `${isp}`,
         },
       ];
+    },
+    handleReset() {
+      this.isProcessing = true;
+      this.$emit("back-to-default");
+      this.isProcessing = false;
     },
   },
 };
