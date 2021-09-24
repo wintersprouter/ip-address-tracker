@@ -39,7 +39,7 @@
           </div>
 
           <h1
-            class="text-white text-2xl font-medium text-center my-8"
+            class="text-white text-2xl font-medium text-center my-4"
             v-if="isDefault"
           >
             Your IP address is <span>{{ this.ip }}</span
