@@ -74,4 +74,3 @@ npm run serve
   - Local:   http://localhost:8080/
   - Network: http://<Your Virtual IP>:8080/
 ```
-```
