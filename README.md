@@ -75,6 +75,3 @@ npm run serve
   - Network: http://<Your Virtual IP>:8080/
 ```
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
