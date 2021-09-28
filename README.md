@@ -56,12 +56,7 @@ $ touch .env
 4. 在 .env 中，新增以下內容
 
 ```
-module.exports = {
-  transpileDependencies: [
-    VUE_APP_IP_KEY= YOUR_IP_Geolocation_API_KEY
-  ]
-}
-
+VUE_APP_IP_KEY= YOUR_IP_Geolocation_API_KEY
 ```
 5. 
 
